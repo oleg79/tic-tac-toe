@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "rxjs": "^5.5.7"
+  },
+  "devDependencies": {
+    "babel-plugin-react-require": "^3.0.0",
+    "babel-preset-react-app": "^3.1.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.7",
+    "tailwindcss": "^0.5.1"
+  }
+}
