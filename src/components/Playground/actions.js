@@ -7,3 +7,8 @@ export const setCell = (position, symbol) => ({
   type: SET_CELL,
   payload: [ position, symbol ]
 })
+
+export const playerMove = position => ({
+  type: PLAYER_MOVE,
+  payload: position
+})

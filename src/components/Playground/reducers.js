@@ -5,10 +5,15 @@ import { RESET_GAME } from '../Header/actions'
 
 const initialBoard = fromJS([ Array(3), Array(3), Array(3) ])
 
-const board = (state = initialBoard, { type, payload = [[], null] }) => ({
-  [SET_CELL]: state.setIn(...payload),
-  [RESET_GAME]: initialBoard
-})[type] || state
+const board = (state = initialBoard, { type, payload = [[], null] }) => {
+  switch (type) {
+    case SET_CELL:
+      return  state.setIn(...payload)
+    case RESET_GAME:
+      return initialBoard
+  }
+  return state
+}
 
 
 const initialMoves = {

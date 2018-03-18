@@ -1,14 +1,36 @@
 import { connect } from 'react-redux'
-import { setCell } from '../../actions'
+import { setCell, playerMove } from '../../actions'
+import { AITurn } from '../../../Header/actions'
 
-const EmptyCell = ({ row, cell, symbol, setCell }) =>
-  <div className='cell' onClick={() => setCell([ row, cell ], symbol) }></div>
+const EmptyCell = ({ row, cell, symbol, turn, setCell, playerMove, AITurn }) => {
+
+  const onClick = () => {
+    if (turn === 'player') {
+      const position = [ row, cell ];
+
+      setCell(position, symbol)
+      playerMove(position)
+      AITurn()
+    }
+  }
+
+  return (
+    <div
+      className='cell'
+      onClick={onClick}
+    ></div>
+  )
+}
+
 
 export default connect(
   ({ gameStatus: { info } }) => ({
-    symbol: info.symbols[ info.turn ]
+    symbol: info.symbols[ info.turn ],
+    turn: info.turn
   }),
   {
-    setCell
+    setCell,
+    playerMove,
+    AITurn
   }
 )(EmptyCell)
