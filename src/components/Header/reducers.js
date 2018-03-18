@@ -22,8 +22,8 @@ const initialInfo = () => {
   return {
     turn,
     symbols: {
-      AI: turn === AI ? 'x' : 'o',
-      player: turn === PLAYER ? 'x' : 'o',
+      AI: turn === AI ? 'X' : 'O',
+      player: turn === PLAYER ? 'X' : 'O',
     }
   }
 }
