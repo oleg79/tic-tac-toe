@@ -1,19 +1,19 @@
 import Moves from './components/Moves'
 import Row from './components/Row'
 
-const PlayGround = () =>
+const Playground = ({ board, moves }) =>
   <div className='flex p-4 mb-2'>
-    <Moves moves={['[ 1, 1 ]']}/>
+    <Moves moves={ moves.player }/>
 
     <div className='flex flex-1 flex-col items-center w-full content-center'>
 
       {
-        [0, 1, 2].map(i => <Row key={i} rowKey={i}/>)
+        board.map((row, i) => <Row key={i} rowKey={i} row={row}/>)
       }
 
     </div>
 
-    <Moves moves={['[ 0, 0 ]', '[ 2, 2 ]']}/>
+    <Moves moves={ moves.AI }/>
   </div>
 
-export default PlayGround
+export default Playground

@@ -12,8 +12,8 @@ const OCell = () =>
 
 
 const Cell = ({ row, cell, cellType = null }) => ({
-  o: <OCell/>,
-  x: <XCell/>
+  O: <OCell/>,
+  X: <XCell/>
 })[cellType] || <EmptyCell {...{ row, cell }}/>
 
 export default Cell

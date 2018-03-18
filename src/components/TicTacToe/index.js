@@ -1,11 +1,11 @@
 import Header from '../Header'
-import PlayGround from '../PlayGround'
+import Playground from '../Playground'
 import Footer from '../Footer'
 
 const TicTacToe = () =>
   <div className='container'>
     <Header/>
-    <PlayGround/>
+    <Playground/>
     <Footer/>
   </div>
 
