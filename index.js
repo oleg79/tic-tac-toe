@@ -1,4 +1,4 @@
-import './styles.sass'
+import './styles/styles.sass'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 

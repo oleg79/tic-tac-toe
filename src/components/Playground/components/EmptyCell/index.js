@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { setCell, playerMove } from '../../actions'
-import { AITurn } from '../../../Header/actions'
 
 const EmptyCell = ({ row, cell, symbol, turn, setCell, playerMove, AITurn }) => {
 
@@ -10,7 +9,6 @@ const EmptyCell = ({ row, cell, symbol, turn, setCell, playerMove, AITurn }) => 
 
       setCell(position, symbol)
       playerMove(position)
-      AITurn()
     }
   }
 
@@ -31,6 +29,5 @@ export default connect(
   {
     setCell,
     playerMove,
-    AITurn
   }
 )(EmptyCell)
