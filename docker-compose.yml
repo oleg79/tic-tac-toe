@@ -14,3 +14,4 @@ php:
     - 9000:9000
   volumes:
     - ./client:/var/www/html
+    - ./vendor:/var/www/vendor

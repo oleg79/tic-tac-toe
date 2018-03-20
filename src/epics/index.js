@@ -33,9 +33,12 @@ const getAIMove = (action$, store) =>
   action$
     .ofType(AI_TURN)
     .switchMap(() => Observable.of(fetchAIMove(store.getState().playground.board)))
-    .switchMap(() =>
-      Observable.ajax.getJSON('/move.json').delay(2000)
-        .map(({ data }) => fetchAIMoveFulfilled(data))
+    .delay(100)
+    .switchMap(({ payload }) =>
+      Observable.ajax.post(
+        'http://localhost:8080/get-move',
+        { board: JSON.stringify(payload) },
+      ).map(({ response }) => fetchAIMoveFulfilled(response))
     )
 
 
