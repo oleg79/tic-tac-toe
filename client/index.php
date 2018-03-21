@@ -27,9 +27,10 @@ $app->post('/get-move',function (\Symfony\Component\HttpFoundation\Request $requ
         }
     }
 
-    $moveIndex = mt_rand(0, count($possibleMoves));
+    $cnt = count($possibleMoves);
+    $move = $cnt === 1 ? $possibleMoves[0] : $possibleMoves[ mt_rand(0, $cnt - 1) ];
 
-    return new \Symfony\Component\HttpFoundation\JsonResponse($possibleMoves[$moveIndex]);
+    return new \Symfony\Component\HttpFoundation\JsonResponse($move);
 });
 
 $app->options('{_}', function () {
