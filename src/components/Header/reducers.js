@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { PLAYER_WIN, AI_WIN, PLAYER_TURN, AI_TURN, RESET_GAME } from './actions';
+import { PLAYER_WIN, AI_WIN, PLAYER_TURN, AI_TURN, RESET_GAME, SET_SYMBOLS } from './actions';
 
 const AI = 'AI'
 const PLAYER = 'player'
@@ -28,9 +28,10 @@ const initialInfo = () => {
   }
 }
 
-const info = (state = initialInfo(), { type }) => ({
+const info = (state = initialInfo(), { type, payload }) => ({
   [PLAYER_TURN]: {...state, turn: PLAYER},
   [AI_TURN]: {...state, turn: AI},
+  [SET_SYMBOLS]: {...state, symbols: payload},
   [RESET_GAME]: initialInfo()
 })[type] || state;
 

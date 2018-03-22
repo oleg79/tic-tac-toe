@@ -1,3 +1,5 @@
+import { lifecycle } from 'recompose'
+
 const Header = ({ score, info: { turn, symbols } }) =>
   <div>
     <div className='flex p-4 mb-2'>
@@ -22,4 +24,8 @@ const Header = ({ score, info: { turn, symbols } }) =>
     </div>
   </div>
 
-export default Header
+export default lifecycle({
+  componentDidMount() {
+    this.props.initGame()
+  }
+})(Header)

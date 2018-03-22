@@ -40,12 +40,12 @@ const getVerticals = n => {
 export const checkBoard = (symbol, board) => {
   const n = board.length
   const everyPredicate = ([i, j]) => board[i][j] === symbol
+  const somePredicate = v => v.every(everyPredicate)
 
   return  getLeftDiagonal(n).every(everyPredicate) ||
           getRightDiagonal(n).every(everyPredicate) ||
-          getVerticals(n)
-            .some(v => v.every(everyPredicate)) ||
-          getHorizontals(n)
-            .some(h => h.every(everyPredicate))
+          getVerticals(n).some(somePredicate) ||
+          getHorizontals(n).some(somePredicate)
 }
 
+export const checkAvailableMoves = board => [].concat(...board).some(c => !c)
