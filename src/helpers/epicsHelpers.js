@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Rx'
 import get from 'lodash.get'
 import { AI_WIN, END_OF_THE_GAME, PLAYER_WIN } from '../components/Header/actions'
 
-export const getBoard = state => get(state, 'playground.board', [])
+export const getBoard = state => get(state, 'playground.board.board', [])
 export const getTurn = state => get(state, 'gameStatus.info.turn')
 export const getAISymbol = state =>  get(state, 'gameStatus.info.symbols.AI')
 

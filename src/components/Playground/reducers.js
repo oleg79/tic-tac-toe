@@ -3,16 +3,24 @@ import { fromJS } from 'immutable'
 import { SET_CELL, AI_MOVE, PLAYER_MOVE } from './actions'
 import { RESET_GAME, AI_WIN, PLAYER_WIN } from '../Header/actions'
 
-const initialBoard = fromJS([ Array(3), Array(3), Array(3) ])
+const generateBoard = n => fromJS(Array(n).fill(1).map(() => Array(n)))
+
+const generateBoardState = n => ({
+  size: n,
+  board: generateBoard(n)
+})
+
+const initialBoard = generateBoardState(3)
 
 const board = (state = initialBoard, { type, payload = [[], null] }) => {
   switch (type) {
     case SET_CELL:
-      return  state.setIn(...payload)
+      return  { ...state, board: state.board.setIn(...payload) }
     case RESET_GAME:
+      return initialBoard;
     case AI_WIN:
     case PLAYER_WIN:
-      return initialBoard
+      return generateBoardState(state.size)
   }
   return state
 }
