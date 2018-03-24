@@ -1,31 +1,35 @@
-client:
-  image: nginx:latest
-  ports:
-    - 8080:80
-  volumes:
-    - ./client:/var/www/html/client:rw
-    - ./Docker/nginx/client.conf:/etc/nginx/conf.d/default.conf
-  links:
-    - php
+version: "3"
+services:
+  client:
+    image: nginx:latest
+    ports:
+      - 8080:80
+    volumes:
+      - ./client:/var/www/html/client:rw
+      - ./Docker/nginx/client.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php
 
-server:
-  image: nginx:latest
-  ports:
-    - 8090:80
-  volumes:
-    - ./server:/var/www/html/server:rw
-    - ./Docker/nginx/server.conf:/etc/nginx/conf.d/default.conf
-  links:
-    - php
+  service:
+    image: nginx:latest
+    ports:
+      - 8090:80
+    expose:
+      - 8090
+    volumes:
+      - ./service:/var/www/html/service:rw
+      - ./Docker/nginx/service.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php
 
-php:
-  image: php:7.2-fpm
-  ports:
-    - 9000:9000
-  volumes:
-    - ./client:/var/www/html/client:rw
-    - ./server:/var/www/html/server:rw
-    - ./vendor:/var/www/vendor:rw
+  php:
+    build: ./Docker
+    ports:
+      - 9000:9000
+    volumes:
+      - ./client:/var/www/html/client:rw
+      - ./service:/var/www/html/service:rw
+      - ./vendor:/var/www/html/vendor:rw
 
 
 

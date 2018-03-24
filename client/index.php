@@ -3,7 +3,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 $app = new Silex\Application();
 
@@ -17,18 +17,15 @@ $app->after(function (Request $request, Response $response) {
 $app->post('/get-move',function (\Symfony\Component\HttpFoundation\Request $request) {
     $board = json_decode($request->get('board'), true);
 
-    $possibleMoves = [];
+    $move = \ClientApp\DummyAI::getMove($board);
 
-    for ($row = 0; $row < count($board); $row++) {
-        for ($col = 0; $col < count($board[$row]); $col++) {
-            if(!$board[$row][$col]) {
-                $possibleMoves[] = [ $row, $col ];
-            }
-        }
+    try {
+        $client = new SoapClient(null, ['uri' => 'http://service', 'location' => 'http://service']);
+        $move = $client->getMove($board);
+    } catch (Exception $e) {
+        return \ClientApp\DummyAI::getMove($board);;
     }
 
-    $cnt = count($possibleMoves);
-    $move = $cnt === 1 ? $possibleMoves[0] : $possibleMoves[ mt_rand(0, $cnt - 1) ];
 
     return new \Symfony\Component\HttpFoundation\JsonResponse($move);
 });
