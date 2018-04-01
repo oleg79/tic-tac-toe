@@ -1,4 +1,4 @@
 {
   "presets": ["react-app"],
-  "plugins": ["react-require"]
+  "plugins": ["react-require", "transform-react-stateless-component-name"]
 }

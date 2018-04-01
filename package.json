@@ -2,8 +2,8 @@
   "dependencies": {
     "immutable": "^3.8.2",
     "lodash.get": "^4.4.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-motion": "^0.5.2",
     "react-redux": "^5.0.7",
     "recompose": "^0.26.0",
@@ -13,8 +13,18 @@
   },
   "devDependencies": {
     "babel-plugin-react-require": "^3.0.0",
+    "babel-plugin-transform-react-stateless-component-name": "^1.1.2",
     "babel-preset-react-app": "^3.1.1",
+    "jasmine": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.1",
+    "karma-jasmine-expect-jsx": "^2.0.0",
     "node-sass": "^4.7.2",
+    "poi": "^9.6.13",
+    "poi-preset-karma": "^9.2.4",
+    "puppeteer": "^1.2.0",
+    "react-test-renderer": "^16.3.0",
     "sass-loader": "^6.0.7",
     "tailwindcss": "^0.5.1"
   }

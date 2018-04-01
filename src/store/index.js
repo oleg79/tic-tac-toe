@@ -7,9 +7,10 @@ const epicMiddleware = createEpicMiddleware(rootEpic)
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-export default createStore(
+export default initialState => createStore(
   rootReducer,
   composeEnhancers(
     applyMiddleware(epicMiddleware)
-  )
+  ),
+  initialState
 )

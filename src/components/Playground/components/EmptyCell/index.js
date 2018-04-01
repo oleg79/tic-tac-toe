@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { setCell, playerMove } from '../../actions'
 
-const EmptyCell = ({ row, cell, symbol, turn, setCell, playerMove, AITurn }) => {
+export const EmptyCell = ({ row, cell, symbol, turn, setCell, playerMove }) => {
 
   const onClick = () => {
     if (turn === 'player') {

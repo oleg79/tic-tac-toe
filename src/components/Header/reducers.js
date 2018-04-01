@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import { PLAYER_WIN, AI_WIN, PLAYER_TURN, AI_TURN, RESET_GAME, SET_SYMBOLS } from './actions';
 
-const AI = 'AI'
-const PLAYER = 'player'
+export const AI = 'AI'
+export const PLAYER = 'player'
 
 const initialScore = {
   player: 0,
