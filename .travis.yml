@@ -2,8 +2,7 @@ matrix:
   include:
     - language: node_js
       node_js:
-        - "8.10.0"
-
+        - 8.10.0
       sudo: required
       dist: trusty
       addons:
@@ -14,8 +13,9 @@ matrix:
 
     - language: php
       php:
-        - '7.2'
-        - '7.1'
+        - 7.2
+      sudo: required
+      dist: artful
 
 notifications:
   email: false
