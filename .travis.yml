@@ -1,14 +1,20 @@
-language: node_js
-node_js:
-  - "8.10.0"
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - "8.10.0"
 
-sudo: required
-dist: trusty
-addons:
-    chrome: stable
-before_script:
-    - "sudo chown root /opt/google/chrome/chrome-sandbox"
-    - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+      sudo: required
+      dist: trusty
+      addons:
+        chrome: stable
+      before_script:
+        - "sudo chown root /opt/google/chrome/chrome-sandbox"
+        - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+
+    - language: php
+      php:
+        - '7.2'
 
 notifications:
   email: false

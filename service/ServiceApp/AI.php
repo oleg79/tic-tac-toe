@@ -22,6 +22,15 @@ class AI
         }
 
         $cnt = count($possibleMoves);
+
+        if ($cnt === 0) {
+            return [];
+        } elseif ($cnt === count($board) ** 2) {
+            $index = floor(count($board) / 2);
+
+            return [ $index, $index ];
+        }
+
         return $cnt === 1 ? $possibleMoves[0] : $possibleMoves[ mt_rand(0, $cnt - 1) ];
     }
 }
