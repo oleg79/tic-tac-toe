@@ -5,7 +5,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 
 if (isset($_GET['wsdl'])) {
-    $miniMax = new \ServiceApp\MiniMax;
+    $miniMax = new \ServiceApp\AI;
     $serviceURI = 'http://service/index.php';
     $wsdlGenerator = new PHP2WSDL\PHPClass2WSDL($miniMax, $serviceURI);
     $wsdlGenerator->generateWSDL(true);
@@ -15,5 +15,5 @@ if (isset($_GET['wsdl'])) {
 }
 
 $server = new SoapServer(null, ['uri' => 'http://service/index.php']);
-$server->setClass('ServiceApp\\MiniMax');
+$server->setClass('ServiceApp\\AI');
 $server->handle();

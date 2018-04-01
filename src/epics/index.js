@@ -40,7 +40,10 @@ const fetchAIMoveEpic = (action$, store) =>
   action$.ofType(AI_TURN)
     .switchMap(() => Observable.of(fetchAIMove(getBoard(store.getState()))))
     .switchMap(({ payload }) =>
-      applyTakeUntil(action$, Observable.ajax.post('http://localhost:8080/get-move', { board: JSON.stringify(payload) })
+      applyTakeUntil(action$, Observable.ajax.post('http://localhost:8080/get-move', { data: JSON.stringify({
+          board: payload,
+          AIType: 'dummy' // TODO: get from state
+        }) })
         .map(({ response }) => fetchAIMoveFulfilled(response))
       )
     )

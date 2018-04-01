@@ -15,17 +15,21 @@ $app->after(function (Request $request, Response $response) {
 });
 
 $app->post('/get-move',function (\Symfony\Component\HttpFoundation\Request $request) {
-    $board = json_decode($request->get('board'), true);
+    [
+        'board' => $board,
+        'AIType' => $AIType
+    ] = json_decode($request->get('data'), true);
 
-    $move = \ClientApp\DummyAI::getMove($board);
-
-    try {
-        $client = new SoapClient(null, ['uri' => 'http://service', 'location' => 'http://service']);
-        $move = $client->getMove($board);
-    } catch (Exception $e) {
-        return \ClientApp\DummyAI::getMove($board);;
+    if ($AIType === 'dummy') {
+        $move = \ClientApp\DummyAI::getMove($board);
+    } else {
+        try {
+            $client = new SoapClient(null, ['uri' => 'http://service', 'location' => 'http://service']);
+            $move = $client->getMove($board);
+        } catch (Exception $e) {
+            return \ClientApp\DummyAI::getMove($board);;
+        }
     }
-
 
     return new \Symfony\Component\HttpFoundation\JsonResponse($move);
 });

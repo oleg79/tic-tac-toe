@@ -9,5 +9,8 @@
             "ClientApp\\": "client",
             "ServiceApp\\": "service"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
     }
 }

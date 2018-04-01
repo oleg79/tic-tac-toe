@@ -2,7 +2,7 @@
 
 namespace ServiceApp;
 
-class MiniMax
+class AI
 {
     /**
      * @soap
