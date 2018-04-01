@@ -12,8 +12,7 @@ matrix:
         - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
 
     - language: php
-      php:
-        - 7.1
+      php: 7.2
       sudo: required
       dist: trusty
 
