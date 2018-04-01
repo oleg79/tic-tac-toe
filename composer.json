@@ -3,14 +3,16 @@
         "silex/silex": "~2.0",
         "php2wsdl/php2wsdl": "^0.6.0"
     },
-
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit --configuration=\"./phpunit.xml\" --include-path=\"./tests\""
+    },
     "autoload": {
         "psr-0": {
             "ClientApp\\": "client",
             "ServiceApp\\": "service"
         }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^7.0"
     }
 }
