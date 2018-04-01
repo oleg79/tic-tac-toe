@@ -13,9 +13,9 @@ matrix:
 
     - language: php
       php:
-        - 7.2
+        - 7.1
       sudo: required
-      dist: artful
+      dist: trusty
 
 notifications:
   email: false
