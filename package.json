@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "poi test"
+  },
   "dependencies": {
     "immutable": "^3.8.2",
     "lodash.get": "^4.4.2",
