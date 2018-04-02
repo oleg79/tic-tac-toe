@@ -13,10 +13,10 @@ class AI
     /**
      * @soap
      * @param array $board
-     * @param string|null $AISymbol
+     * @param string $AISymbol
      * @return array
      */
-    public function getOptimalMove(array $board, string $AISymbol = null):array
+    public function getOptimalMove(array $board, string $AISymbol):array
     {
         $this->AI       = $AISymbol;
         $this->player   = $this->getPlayerSymbol($AISymbol);

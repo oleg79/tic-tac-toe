@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
 import Header from './Header'
-import { initGame } from './actions'
+import { initGame, setAIType } from './actions'
 
 export default connect(
   ({ gameStatus }) => ({
     ...gameStatus
   }),
   {
-    initGame
+    initGame,
+    setAIType,
   }
 )(Header)

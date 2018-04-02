@@ -5,6 +5,7 @@ import { AI_WIN, END_OF_THE_GAME, PLAYER_WIN } from '../components/Header/action
 export const getBoard = state => get(state, 'playground.board.board', [])
 export const getTurn = state => get(state, 'gameStatus.info.turn')
 export const getAISymbol = state =>  get(state, 'gameStatus.info.symbols.AI')
+export const getAIType = state =>  get(state, 'gameStatus.info.AIType')
 
 export const getWinActionType = (symbol, state) => {
   const AISymbol = getAISymbol(state)

@@ -1,6 +1,6 @@
 import { lifecycle } from 'recompose'
 
-const Header = ({ score, info: { turn, symbols } }) =>
+const Header = ({ score, info: { turn, symbols, AIType, AITypes }, setAIType }) =>
   <div>
     <div className='flex p-4 mb-2'>
       <div className='flex-1 text-center'>
@@ -16,6 +16,14 @@ const Header = ({ score, info: { turn, symbols } }) =>
       <div className='flex-1 text-center'>
         <div>AI</div>
         <div>{ symbols.AI }</div>
+        {
+          AITypes.map((type, i) =>
+            <p key={i}>
+              <input type='radio' onChange={() => setAIType(type)} checked={type === AIType}/>
+              { type }
+            </p>
+          )
+        }
       </div>
     </div>
 

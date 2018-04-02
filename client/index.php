@@ -16,8 +16,9 @@ $app->after(function (Request $request, Response $response) {
 
 $app->post('/get-move',function (\Symfony\Component\HttpFoundation\Request $request) {
     [
-        'board' => $board,
-        'AIType' => $AIType
+        'board'     => $board,
+        'AIType'    => $AIType,
+        'AISymbol'  => $AISymbol
     ] = json_decode($request->get('data'), true);
 
     if ($AIType === 'dummy') {
@@ -25,7 +26,7 @@ $app->post('/get-move',function (\Symfony\Component\HttpFoundation\Request $requ
     } else {
         try {
             $client = new SoapClient(null, ['uri' => 'http://service', 'location' => 'http://service']);
-            $move = $client->getOptimalMove($board);
+            $move = $client->getOptimalMove($board, $AISymbol);
         } catch (Exception $e) {
             return \ClientApp\DummyAI::getMove($board);;
         }

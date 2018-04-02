@@ -6,6 +6,7 @@ export const INIT_GAME = 'INIT_GAME'
 export const RESET_GAME = 'RESET_GAME'
 export const END_OF_THE_GAME = 'END_OF_THE_GAME'
 export const SET_SYMBOLS = 'SET_SYMBOLS'
+export const SET_AI_TYPE = 'SET_AI_TYPE'
 
 export const initGame = () => ({
   type: INIT_GAME
@@ -26,4 +27,9 @@ export const resetGame = () => ({
 export const setSymbols = symbolsMap => ({
   type: SET_SYMBOLS,
   payload: symbolsMap
+})
+
+export const setAIType = type => ({
+  type: SET_AI_TYPE,
+  payload: type
 })

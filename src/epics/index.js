@@ -20,7 +20,7 @@ import {
   AITurn,
   setSymbols
 } from '../components/Header/actions'
-import { applyTakeUntil, getAISymbol, getWinActionType, getBoard, getTurn } from '../helpers/epicsHelpers'
+import { applyTakeUntil, getAISymbol, getAIType, getWinActionType, getBoard, getTurn } from '../helpers/epicsHelpers'
 
 
 const playerMoveEpic = action$ =>
@@ -36,17 +36,23 @@ const AIMoveEpic = (action$, store) =>
       Observable.of(playerTurn())
     ))
 
-const fetchAIMoveEpic = (action$, store) =>
-  action$.ofType(AI_TURN)
+const fetchAIMoveEpic = (action$, store) => {
+  const state = store.getState()
+  const AIType = getAIType(state)
+  const AISymbol = getAISymbol(state)
+
+  return action$.ofType(AI_TURN)
     .switchMap(() => Observable.of(fetchAIMove(getBoard(store.getState()))))
     .switchMap(({ payload }) =>
       applyTakeUntil(action$, Observable.ajax.post('http://localhost:8080/get-move', { data: JSON.stringify({
           board: payload,
-          AIType: 'dummy' // TODO: get from state
+          AISymbol,
+          AIType:getAIType(store.getState())
         }) })
         .map(({ response }) => fetchAIMoveFulfilled(response))
       )
     )
+}
 
 const checkBoardEpic = (action$, store) =>
   action$.ofType(FETCH_AI_MOVE_FULFILLED, PLAYER_MOVE)
