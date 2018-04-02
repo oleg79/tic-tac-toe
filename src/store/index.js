@@ -12,5 +12,5 @@ export default initialState => createStore(
   composeEnhancers(
     applyMiddleware(epicMiddleware)
   ),
-  initialState
+  initialState,
 )

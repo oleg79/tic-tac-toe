@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "poi",
     "test": "poi test"
   },
   "dependencies": {

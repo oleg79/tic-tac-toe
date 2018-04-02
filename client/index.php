@@ -25,7 +25,7 @@ $app->post('/get-move',function (\Symfony\Component\HttpFoundation\Request $requ
     } else {
         try {
             $client = new SoapClient(null, ['uri' => 'http://service', 'location' => 'http://service']);
-            $move = $client->getMove($board);
+            $move = $client->getOptimalMove($board);
         } catch (Exception $e) {
             return \ClientApp\DummyAI::getMove($board);;
         }
